@@ -1,0 +1,35 @@
+{
+	"entryFile": "src/index.ts",
+	"noImplicitAdditionalProperties": "throw-on-extras",
+	"controllerPathGlobs": [
+		"src/**/*.controller.ts"
+	],
+	"spec": {
+		"outputDirectory": "public",
+		"specVersion": 3,
+		"basePath": "/api",
+		"securityDefinitions": {
+			"jwt": {
+				"type": "apiKey",
+				"in": "header",
+				"name": "Authorization"
+			}
+		},
+		"security": [
+			{
+				"jwt": []
+			}
+		],
+		"spec": {
+			"servers": [
+				{
+					"url": "/api",
+					"description": "Local development"
+				}
+			]
+		}
+	},
+	"routes": {
+		"authenticationModule": "./src/authentication.ts"
+	}
+}

@@ -1,0 +1,1664 @@
+{
+	"components": {
+		"examples": {},
+		"headers": {},
+		"parameters": {},
+		"requestBodies": {},
+		"responses": {},
+		"schemas": {
+			"LoginUserResponse": {
+				"properties": {
+					"email": {
+						"type": "string"
+					},
+					"token": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"email",
+					"token"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"GetAdminProfileResponse": {
+				"properties": {
+					"email": {
+						"type": "string"
+					},
+					"name": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"email",
+					"name"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"MessageResponse": {
+				"properties": {
+					"message": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"message"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"Location": {
+				"properties": {
+					"id": {
+						"type": "number",
+						"format": "double"
+					},
+					"name": {
+						"type": "string"
+					},
+					"address": {
+						"type": "string"
+					},
+					"phone": {
+						"type": "string"
+					},
+					"seat": {
+						"type": "number",
+						"format": "double"
+					},
+					"shows": {
+						"items": {
+							"$ref": "#/components/schemas/Show"
+						},
+						"type": "array"
+					},
+					"staffs": {
+						"items": {
+							"$ref": "#/components/schemas/Staff"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"id",
+					"name",
+					"address",
+					"phone",
+					"seat",
+					"shows",
+					"staffs"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"Show": {
+				"properties": {
+					"id": {
+						"type": "number",
+						"format": "double"
+					},
+					"startDate": {
+						"type": "string"
+					},
+					"startSlot": {
+						"type": "number",
+						"format": "double"
+					},
+					"isActive": {
+						"type": "boolean"
+					},
+					"location": {
+						"$ref": "#/components/schemas/Location"
+					},
+					"locationId": {
+						"type": "number",
+						"format": "double"
+					},
+					"movie": {
+						"$ref": "#/components/schemas/Movie"
+					},
+					"movieId": {
+						"type": "number",
+						"format": "double"
+					}
+				},
+				"required": [
+					"id",
+					"startDate",
+					"startSlot",
+					"isActive",
+					"location",
+					"locationId",
+					"movie",
+					"movieId"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"Movie": {
+				"properties": {
+					"id": {
+						"type": "number",
+						"format": "double"
+					},
+					"name": {
+						"type": "string"
+					},
+					"description": {
+						"type": "string"
+					},
+					"length": {
+						"type": "number",
+						"format": "double"
+					},
+					"isActive": {
+						"type": "boolean"
+					},
+					"shows": {
+						"items": {
+							"$ref": "#/components/schemas/Show"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"id",
+					"name",
+					"description",
+					"length",
+					"isActive",
+					"shows"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"Staff": {
+				"properties": {
+					"id": {
+						"type": "string"
+					},
+					"name": {
+						"type": "string"
+					},
+					"email": {
+						"type": "string"
+					},
+					"password": {
+						"type": "string"
+					},
+					"isActive": {
+						"type": "boolean"
+					},
+					"location": {
+						"$ref": "#/components/schemas/Location"
+					},
+					"locationId": {
+						"type": "number",
+						"format": "double"
+					}
+				},
+				"required": [
+					"id",
+					"name",
+					"email",
+					"password",
+					"isActive",
+					"location",
+					"locationId"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"RegisterUserResponse": {
+				"properties": {
+					"message": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"message"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"GetCustomerProfileResponse": {
+				"properties": {
+					"email": {
+						"type": "string"
+					},
+					"name": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"email",
+					"name"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"Reservation": {
+				"properties": {
+					"id": {
+						"type": "string"
+					},
+					"seatId": {
+						"type": "number",
+						"format": "double"
+					},
+					"customer": {
+						"$ref": "#/components/schemas/Customer"
+					},
+					"customerId": {
+						"type": "string"
+					},
+					"show": {
+						"$ref": "#/components/schemas/Show"
+					},
+					"showId": {
+						"type": "number",
+						"format": "double"
+					}
+				},
+				"required": [
+					"id",
+					"seatId",
+					"customer",
+					"customerId",
+					"show",
+					"showId"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"Customer": {
+				"properties": {
+					"id": {
+						"type": "string"
+					},
+					"name": {
+						"type": "string"
+					},
+					"email": {
+						"type": "string"
+					},
+					"password": {
+						"type": "string"
+					},
+					"reservations": {
+						"items": {
+							"$ref": "#/components/schemas/Reservation"
+						},
+						"type": "array"
+					}
+				},
+				"required": [
+					"id",
+					"name",
+					"email",
+					"password",
+					"reservations"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"GetStaffProfileResponse": {
+				"properties": {
+					"email": {
+						"type": "string"
+					},
+					"name": {
+						"type": "string"
+					}
+				},
+				"required": [
+					"email",
+					"name"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"MovieModel": {
+				"properties": {
+					"id": {
+						"type": "number",
+						"format": "double"
+					},
+					"name": {
+						"type": "string"
+					},
+					"description": {
+						"type": "string"
+					},
+					"length": {
+						"type": "number",
+						"format": "double"
+					},
+					"isActive": {
+						"type": "boolean"
+					}
+				},
+				"required": [
+					"id",
+					"name",
+					"description",
+					"length",
+					"isActive"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"LocationModel": {
+				"properties": {
+					"id": {
+						"type": "number",
+						"format": "double"
+					},
+					"name": {
+						"type": "string"
+					},
+					"address": {
+						"type": "string"
+					},
+					"phone": {
+						"type": "string"
+					},
+					"seat": {
+						"type": "number",
+						"format": "double"
+					}
+				},
+				"required": [
+					"id",
+					"name",
+					"address",
+					"phone",
+					"seat"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"ShowResponse": {
+				"properties": {
+					"id": {
+						"type": "number",
+						"format": "double"
+					},
+					"startDate": {
+						"type": "string"
+					},
+					"startSlot": {
+						"type": "number",
+						"format": "double"
+					},
+					"isActive": {
+						"type": "boolean"
+					},
+					"movie": {
+						"$ref": "#/components/schemas/MovieModel"
+					},
+					"location": {
+						"$ref": "#/components/schemas/LocationModel"
+					}
+				},
+				"required": [
+					"id",
+					"startDate",
+					"startSlot",
+					"isActive",
+					"movie",
+					"location"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"Slot": {
+				"properties": {
+					"id": {
+						"type": "number",
+						"format": "double"
+					},
+					"isReserved": {
+						"type": "boolean"
+					},
+					"movie": {
+						"$ref": "#/components/schemas/MovieModel"
+					}
+				},
+				"required": [
+					"id",
+					"isReserved"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"Seat": {
+				"properties": {
+					"id": {
+						"type": "number",
+						"format": "double"
+					},
+					"isReserved": {
+						"type": "boolean"
+					}
+				},
+				"required": [
+					"id",
+					"isReserved"
+				],
+				"type": "object",
+				"additionalProperties": false
+			},
+			"SpecificShowResponse": {
+				"properties": {
+					"id": {
+						"type": "number",
+						"format": "double"
+					},
+					"startDate": {
+						"type": "string"
+					},
+					"startSlot": {
+						"type": "number",
+						"format": "double"
+					},
+					"isActive": {
+						"type": "boolean"
+					},
+					"movie": {
+						"$ref": "#/components/schemas/MovieModel"
+					},
+					"location": {
+						"properties": {
+							"seatDetail": {
+								"items": {
+									"$ref": "#/components/schemas/Seat"
+								},
+								"type": "array"
+							},
+							"seat": {
+								"type": "number",
+								"format": "double"
+							},
+							"phone": {
+								"type": "string"
+							},
+							"address": {
+								"type": "string"
+							},
+							"name": {
+								"type": "string"
+							},
+							"id": {
+								"type": "number",
+								"format": "double"
+							}
+						},
+						"required": [
+							"seatDetail",
+							"seat",
+							"phone",
+							"address",
+							"name",
+							"id"
+						],
+						"type": "object"
+					}
+				},
+				"required": [
+					"id",
+					"startDate",
+					"startSlot",
+					"isActive",
+					"movie",
+					"location"
+				],
+				"type": "object",
+				"additionalProperties": false
+			}
+		},
+		"securitySchemes": {
+			"jwt": {
+				"type": "apiKey",
+				"in": "header",
+				"name": "Authorization"
+			}
+		}
+	},
+	"info": {
+		"title": "movie-ticket-online-booking-system",
+		"version": "1.0.0",
+		"description": "It is the project of Service Oriented Application course.",
+		"license": {
+			"name": "ISC"
+		},
+		"contact": {}
+	},
+	"openapi": "3.0.0",
+	"paths": {
+		"/admin/login": {
+			"post": {
+				"operationId": "Login",
+				"responses": {
+					"200": {
+						"description": "Login admin",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/LoginUserResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Admin"
+				],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"properties": {
+									"password": {
+										"type": "string"
+									},
+									"email": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"password",
+									"email"
+								],
+								"type": "object"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/admin/profile": {
+			"get": {
+				"operationId": "GetProfile",
+				"responses": {
+					"200": {
+						"description": "Get admin profile",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/GetAdminProfileResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Admin"
+				],
+				"security": [
+					{
+						"jwt": []
+					}
+				],
+				"parameters": []
+			}
+		},
+		"/admin/staff": {
+			"post": {
+				"operationId": "CreateStaff",
+				"responses": {
+					"201": {
+						"description": "Created staff",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/MessageResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Admin"
+				],
+				"security": [
+					{
+						"jwt": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"properties": {
+									"locationId": {
+										"type": "number",
+										"format": "double"
+									},
+									"name": {
+										"type": "string"
+									},
+									"password": {
+										"type": "string"
+									},
+									"email": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"locationId",
+									"name",
+									"password",
+									"email"
+								],
+								"type": "object"
+							}
+						}
+					}
+				}
+			},
+			"get": {
+				"operationId": "GetStaffes",
+				"responses": {
+					"200": {
+						"description": "Get all staff",
+						"content": {
+							"application/json": {
+								"schema": {
+									"items": {
+										"$ref": "#/components/schemas/Staff"
+									},
+									"type": "array"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Admin"
+				],
+				"security": [
+					{
+						"jwt": []
+					}
+				],
+				"parameters": []
+			}
+		},
+		"/admin/staff/{id}": {
+			"get": {
+				"operationId": "GetStaff",
+				"responses": {
+					"200": {
+						"description": "Get staff",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Staff"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Admin"
+				],
+				"security": [
+					{
+						"jwt": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			},
+			"patch": {
+				"operationId": "UpdateStaff",
+				"responses": {
+					"201": {
+						"description": "Update staff",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/MessageResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Admin"
+				],
+				"security": [
+					{
+						"jwt": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"properties": {
+									"email": {
+										"type": "string"
+									},
+									"name": {
+										"type": "string"
+									}
+								},
+								"type": "object"
+							}
+						}
+					}
+				}
+			},
+			"delete": {
+				"operationId": "DeleteStaff",
+				"responses": {
+					"201": {
+						"description": "Delete staff",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/MessageResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Admin"
+				],
+				"security": [
+					{
+						"jwt": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/admin/location": {
+			"post": {
+				"operationId": "CreateLocation",
+				"responses": {
+					"201": {
+						"description": "Created location",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/MessageResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Admin"
+				],
+				"security": [
+					{
+						"jwt": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"properties": {
+									"seat": {
+										"type": "number",
+										"format": "double"
+									},
+									"phone": {
+										"type": "string"
+									},
+									"address": {
+										"type": "string"
+									},
+									"name": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"seat",
+									"phone",
+									"address",
+									"name"
+								],
+								"type": "object"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/admin/location/{id}": {
+			"patch": {
+				"operationId": "UpdateLocation",
+				"responses": {
+					"201": {
+						"description": "Update location",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/MessageResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Admin"
+				],
+				"security": [
+					{
+						"jwt": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"properties": {
+									"phone": {
+										"type": "string"
+									},
+									"address": {
+										"type": "string"
+									},
+									"name": {
+										"type": "string"
+									}
+								},
+								"type": "object"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/admin/movie": {
+			"post": {
+				"operationId": "CreateMovie",
+				"responses": {
+					"201": {
+						"description": "Created movie",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/MessageResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Admin"
+				],
+				"security": [
+					{
+						"jwt": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"properties": {
+									"length": {
+										"type": "number",
+										"format": "double"
+									},
+									"description": {
+										"type": "string"
+									},
+									"name": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"length",
+									"description",
+									"name"
+								],
+								"type": "object"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/admin/movie/{id}": {
+			"patch": {
+				"operationId": "UpdateMovie",
+				"responses": {
+					"201": {
+						"description": "Update movie",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/MessageResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Admin"
+				],
+				"security": [
+					{
+						"jwt": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"properties": {
+									"description": {
+										"type": "string"
+									},
+									"name": {
+										"type": "string"
+									}
+								},
+								"type": "object"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/customer/login": {
+			"post": {
+				"operationId": "Login",
+				"responses": {
+					"200": {
+						"description": "Loging In User",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/LoginUserResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Customer"
+				],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"properties": {
+									"password": {
+										"type": "string"
+									},
+									"email": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"password",
+									"email"
+								],
+								"type": "object"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/customer/register": {
+			"post": {
+				"operationId": "Register",
+				"responses": {
+					"201": {
+						"description": "Created User",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/RegisterUserResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Customer"
+				],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"properties": {
+									"name": {
+										"type": "string"
+									},
+									"password": {
+										"type": "string"
+									},
+									"email": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"name",
+									"password",
+									"email"
+								],
+								"type": "object"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/customer/profile": {
+			"get": {
+				"operationId": "GetProfile",
+				"responses": {
+					"200": {
+						"description": "Get customer profile",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/GetCustomerProfileResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Customer"
+				],
+				"security": [
+					{
+						"jwt": []
+					}
+				],
+				"parameters": []
+			}
+		},
+		"/customer/reservation": {
+			"post": {
+				"operationId": "ReserveShow",
+				"responses": {
+					"201": {
+						"description": "Buy a ticket",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/MessageResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Customer"
+				],
+				"security": [
+					{
+						"jwt": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"properties": {
+									"showId": {
+										"type": "number",
+										"format": "double"
+									},
+									"seatId": {
+										"items": {
+											"type": "number",
+											"format": "double"
+										},
+										"type": "array"
+									}
+								},
+								"required": [
+									"showId",
+									"seatId"
+								],
+								"type": "object"
+							}
+						}
+					}
+				}
+			},
+			"get": {
+				"operationId": "GetReservations",
+				"responses": {
+					"200": {
+						"description": "Get customer reservations",
+						"content": {
+							"application/json": {
+								"schema": {
+									"items": {
+										"$ref": "#/components/schemas/Reservation"
+									},
+									"type": "array"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Customer"
+				],
+				"security": [
+					{
+						"jwt": []
+					}
+				],
+				"parameters": []
+			}
+		},
+		"/staff/login": {
+			"post": {
+				"operationId": "Login",
+				"responses": {
+					"200": {
+						"description": "Login admin",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/LoginUserResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Staff"
+				],
+				"security": [],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"properties": {
+									"password": {
+										"type": "string"
+									},
+									"email": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"password",
+									"email"
+								],
+								"type": "object"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/staff/profile": {
+			"get": {
+				"operationId": "GetProfile",
+				"responses": {
+					"200": {
+						"description": "Get staff profile",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/GetStaffProfileResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Staff"
+				],
+				"security": [
+					{
+						"jwt": []
+					}
+				],
+				"parameters": []
+			}
+		},
+		"/staff/show": {
+			"get": {
+				"operationId": "GetShows",
+				"responses": {
+					"200": {
+						"description": "Get all shows",
+						"content": {
+							"application/json": {
+								"schema": {
+									"items": {
+										"$ref": "#/components/schemas/ShowResponse"
+									},
+									"type": "array"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Staff"
+				],
+				"security": [
+					{
+						"jwt": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "date",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			},
+			"post": {
+				"operationId": "CreateShow",
+				"responses": {
+					"201": {
+						"description": "Create show",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/MessageResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Staff"
+				],
+				"security": [
+					{
+						"jwt": []
+					}
+				],
+				"parameters": [],
+				"requestBody": {
+					"required": true,
+					"content": {
+						"application/json": {
+							"schema": {
+								"properties": {
+									"movieId": {
+										"type": "number",
+										"format": "double"
+									},
+									"startSlot": {
+										"type": "number",
+										"format": "double"
+									},
+									"startDate": {
+										"type": "string"
+									}
+								},
+								"required": [
+									"movieId",
+									"startSlot",
+									"startDate"
+								],
+								"type": "object"
+							}
+						}
+					}
+				}
+			}
+		},
+		"/staff/show/slot": {
+			"get": {
+				"operationId": "GetAvailableSlot",
+				"responses": {
+					"200": {
+						"description": "Get slots",
+						"content": {
+							"application/json": {
+								"schema": {
+									"items": {
+										"$ref": "#/components/schemas/Slot"
+									},
+									"type": "array"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Staff"
+				],
+				"security": [
+					{
+						"jwt": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "date",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		"/staff/show/{id}": {
+			"get": {
+				"operationId": "GetShow",
+				"responses": {
+					"200": {
+						"description": "Get show by id",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/SpecificShowResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Staff"
+				],
+				"security": [
+					{
+						"jwt": []
+					}
+				],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			}
+		},
+		"/util/location": {
+			"get": {
+				"operationId": "GetLocations",
+				"responses": {
+					"200": {
+						"description": "Get all locations",
+						"content": {
+							"application/json": {
+								"schema": {
+									"items": {
+										"$ref": "#/components/schemas/Location"
+									},
+									"type": "array"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Util"
+				],
+				"security": [],
+				"parameters": []
+			}
+		},
+		"/util/location/{id}": {
+			"get": {
+				"operationId": "GetLocation",
+				"responses": {
+					"200": {
+						"description": "Get specific location",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/Location"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Util"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			}
+		},
+		"/util/movie": {
+			"get": {
+				"operationId": "GetMovies",
+				"responses": {
+					"200": {
+						"description": "Get all movies",
+						"content": {
+							"application/json": {
+								"schema": {
+									"items": {
+										"$ref": "#/components/schemas/MovieModel"
+									},
+									"type": "array"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Util"
+				],
+				"security": [],
+				"parameters": []
+			}
+		},
+		"/util/movie/{id}": {
+			"get": {
+				"operationId": "GetMovie",
+				"responses": {
+					"200": {
+						"description": "Get specific movie",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/MovieModel"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Util"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			}
+		},
+		"/util/show": {
+			"get": {
+				"operationId": "GetShows",
+				"responses": {
+					"200": {
+						"description": "Get all shows",
+						"content": {
+							"application/json": {
+								"schema": {
+									"items": {
+										"$ref": "#/components/schemas/ShowResponse"
+									},
+									"type": "array"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Util"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "query",
+						"name": "date",
+						"required": true,
+						"schema": {
+							"type": "string"
+						}
+					},
+					{
+						"in": "query",
+						"name": "locationId",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			}
+		},
+		"/util/show/{id}": {
+			"get": {
+				"operationId": "GetShow",
+				"responses": {
+					"200": {
+						"description": "Get show by id",
+						"content": {
+							"application/json": {
+								"schema": {
+									"$ref": "#/components/schemas/SpecificShowResponse"
+								}
+							}
+						}
+					}
+				},
+				"tags": [
+					"Util"
+				],
+				"security": [],
+				"parameters": [
+					{
+						"in": "path",
+						"name": "id",
+						"required": true,
+						"schema": {
+							"format": "double",
+							"type": "number"
+						}
+					}
+				]
+			}
+		}
+	},
+	"servers": [
+		{
+			"url": "/api",
+			"description": "Local development"
+		}
+	]
+}
